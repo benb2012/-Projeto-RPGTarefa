@@ -6,7 +6,7 @@
 Completar o sistema de cadastro de um jogo de RPG escrito em Python. Ele guarda jogadores, personagens, classes, itens e o inventário de cada personagem em um banco de dados. Você vai aprender a criar uma conexão com o banco, incluir registros, buscar por id e por nome e listar tudo usando comandos SQL.
 
 *   **Duração:** cerca de 90 min (Partes 1 a 4) + 15 a 20 min de desafio (Parte 5).
-*   **Entrega:** a pasta do projeto compactada (`.zip`), com os arquivos `.py` completos, e as respostas às perguntas Q1-Q13.
+*   **Entrega:** Disponibilize o link do seu repositório do github (`(https://github.com)`), com os arquivos `.py` completos, e as respostas às perguntas Q1-Q13. (opcional) 
 
 ## O que você precisa
 Python 3 e um editor. Recomendamos o **VS Code (Visual Studio Code)**. O banco de dados é o **SQLite**, que já faz parte do Python: não é preciso instalar nada. O professor vai fornecer o arquivo `rpg_aluno.zip` com estes arquivos:
