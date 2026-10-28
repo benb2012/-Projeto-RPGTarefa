@@ -10,21 +10,21 @@ Apague a linha "raise NotImplementedError" quando escrever o código.
 
 def incluir(conn, nome, tipo, poder):
     """Insere um item e devolve o id gerado."""
-    cursor = conn.execute("INSERT INTO classes (nome) VALUES (?, ?, ?)", (nome, tipo, poder, ))
+    cursor = conn.execute("INSERT INTO itens (nome, tipo, poder) VALUES (?, ?, ?)", (nome, tipo, poder, ))
     conn.commit()                 # grava de verdade no arquivo
     return cursor.lastrowid
 
 
 def buscar_por_id(conn, id):
     """Devolve UMA linha (id, nome, tipo, poder), ou None."""
-    cursor = conn.execute("SELECT id, nome, tipo, poder FROM classes WHERE id = ?", (id,))
+    cursor = conn.execute("SELECT id, nome, tipo, poder FROM itens WHERE id = ?", (id,))
     return cursor.fetchone()
 
 
 def buscar_por_nome(conn, nome):
     """Devolve uma LISTA com os itens cujo nome contém o texto."""
     cursor = conn.execute(
-            "SELECT id, nome, tipo, poder FROM classes WHERE nome LIKE ? ORDER BY nome",
+            "SELECT id, nome, tipo, poder FROM itens WHERE nome LIKE ? ORDER BY nome",
             ("%" + nome + "%",))
     return cursor.fetchall()
 

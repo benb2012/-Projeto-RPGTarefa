@@ -20,31 +20,38 @@ CONSULTA = """
            jogadores.apelido, classes.nome
     FROM personagens
     JOIN jogadores ON jogadores.id = personagens.jogador_id
+    JOIN classes ON classes.id = personagens.classe_id
+    
 """
-# TODO: acrescente acima a linha
-#       JOIN classes ON classes.id = personagens.classe_id
+
+
+
+
+
 
 
 def incluir(conn, nome, nivel, jogador_id, classe_id):
-    """Insere um personagem e devolve o id gerado."""
-    # TODO
-    raise NotImplementedError
+    cursor = conn.execute("INSERT INTO personagens (nome, nivel, jogador_id, classe_id) VALUES (?, ?, ?, ?,)", (nome, nivel, jogador_id, classe_id,))
+    conn.commit()                 # grava de verdade no arquivo
+    return cursor.lastrowid
 
 
 def buscar_por_id(conn, id):
-    """Devolve UMA linha, ou None.
-    Dica: conn.execute(CONSULTA + " WHERE personagens.id = ?", (id,))"""
-    # TODO
-    raise NotImplementedError
+    """Devolve UMA linha (id, nome), ou None se o id não existir."""
+    cursor = conn.execute(CONSULTA + "WHERE personagens.id = ?", (id,))
+    return cursor.fetchone()
 
 
 def buscar_por_nome(conn, nome):
-    """Devolve uma LISTA com os personagens cujo nome contém o texto."""
-    # TODO: cuidado, aqui é personagens.nome (classes também tem coluna nome)
-    raise NotImplementedError
+    """Devolve uma LISTA com as personagens cujo nome contém o texto digitado."""
+    cursor = conn.execute(
+        CONSULTA + "WHERE personagens.nome LIKE ? ORDER BY personagens.nome",
+        ("%" + nome + "%",))
+    return cursor.fetchall()
 
 
 def listar(conn):
     """Devolve uma LISTA com todos os personagens."""
-    # TODO
-    raise NotImplementedError
+    cursor = conn.execute(CONSULTA + "ORDER BY id")
+    return cursor.fetchall()
+    

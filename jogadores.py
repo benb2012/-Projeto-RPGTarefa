@@ -10,8 +10,7 @@ Apague a linha "raise NotImplementedError" quando escrever o código.
 
 def incluir(conn, nome, apelido):
     """Insere um jogador e devolve o id gerado."""
-    cursor = conn.execute(f"INSERT INTO jogadores (nome, apelido) VALUES (?, ?)" (nome, apelido,))
-    
+    cursor = conn.execute("INSERT INTO jogadores (nome, apelido) VALUES (?, ?,)", (nome, apelido,))
     conn.commit()                 # grava de verdade no arquivo
     return cursor.lastrowid
 
