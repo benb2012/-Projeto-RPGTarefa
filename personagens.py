@@ -31,7 +31,7 @@ CONSULTA = """
 
 
 def incluir(conn, nome, nivel, jogador_id, classe_id):
-    cursor = conn.execute("INSERT INTO personagens (nome, nivel, jogador_id, classe_id) VALUES (?, ?, ?, ?,)", (nome, nivel, jogador_id, classe_id,))
+    cursor = conn.execute("INSERT INTO personagens (nome, nivel, jogador_id, classe_id) VALUES (?, ?, ?, ?)", (nome, nivel, jogador_id, classe_id,))
     conn.commit()                 # grava de verdade no arquivo
     return cursor.lastrowid
 
